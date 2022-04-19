@@ -1,0 +1,82 @@
+select * from
+        ( select
+            fileloadcl0_.mssf_id as col_0_0_,
+            fileloadcl0_.mssf_name as col_1_0_,
+            fileloadcl0_.mssf_md5 as col_2_0_,
+            fileloadcl0_.mssf_owner as col_3_0_,
+            fileloadcl0_.mssf_dt_work as col_4_0_,
+            fileloadcl0_.mssf_rec_all as col_5_0_ 
+        from
+            mss_files fileloadcl0_ 
+        where
+            fileloadcl0_.mssf_dt_work between to_date('17.03.2002', 'dd.mm.yyyy') and to_date('17.03.2022 23:59:59', 'dd.mm.yyyy hh24:mi:ss') 
+        order by
+            fileloadcl0_.mssf_id ) 
+    where
+        rownum <= ?
+
+
+select * from
+        ( select
+            row_.*,
+            rownum rownum_ 
+        from
+            ( select
+                fileloadcl0_.mssf_id as col_0_0_,
+                fileloadcl0_.mssf_name as col_1_0_,
+                fileloadcl0_.mssf_md5 as col_2_0_,
+                fileloadcl0_.mssf_owner as col_3_0_,
+                fileloadcl0_.mssf_dt_work as col_4_0_,
+                fileloadcl0_.mssf_rec_all as col_5_0_ 
+            from
+                mss_files fileloadcl0_ 
+            where
+                fileloadcl0_.mssf_dt_work between to_date('14.03.2002', 'dd.mm.yyyy') and to_date('14.03.2022 23:59:59', 'dd.mm.yyyy hh24:mi:ss') 
+            order by
+                fileloadcl0_.mssf_id ) row_ 
+        where
+            rownum <= ?
+        ) 
+    where
+        rownum_ > ?
+
+
+
+select * from (
+    select ROWNUM as row_num, b.* from (
+        select ROWNUM, MY_TIMESTAMP 
+        from T_MY_TABLE 
+        where MY_TIMESTAMP < TIMESTAMP'2015-01-20 12:12:34'
+        and ROWNUM <= 200
+        order by MY_TIMESTAMP desc
+    ) b 
+) where row_num > 100;
+
+
+
+
+select * from saprp_penalties;
+
+select * from (
+       select * from saprp_penalties
+     )
+ where rownum<=20;
+
+select * from (
+      select rownum rownum1, row1.* 
+        from (
+              select * from saprp_penalties
+           ) row1
+--       where rownum<=20
+     )
+ where rownum1>10;
+
+select * from (
+      select rownum rownum1, row1.* 
+        from (
+              select * from saprp_penalties
+           ) row1
+       where rownum<=20
+     )
+ where rownum1>10;
+

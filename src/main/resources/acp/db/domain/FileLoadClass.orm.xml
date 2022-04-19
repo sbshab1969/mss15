@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings 
+        version="2.2" 
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+
+    <package>acp.db.domain</package>
+
+    <entity class="FileLoadClass" access="FIELD">
+    	<table name="mss_files" />
+    	<sequence-generator name="mssf_gen" sequence-name="mssf_seq" allocation-size="1" />
+        <attributes>
+            <id name="id">
+                <column name="mssf_id"/>
+                <generated-value generator="mssf_gen" strategy="SEQUENCE"/>
+            </id>
+            <basic name="name">
+                <column name="mssf_name"/>
+            </basic>
+            <basic name="md5">
+                <column name="mssf_md5"/>
+            </basic>
+            <basic name="dateCreate">
+                <column name="mssf_dt_create"/>
+            </basic>
+            <basic name="dateWork">
+                <column name="mssf_dt_work"/>
+            </basic>
+            <basic name="owner">
+                <column name="mssf_owner"/>
+            </basic>
+            <basic name="configId">
+                <column name="mssf_msso_id"/>
+            </basic>
+            <basic name="statisticR">
+                <column name="mssf_statistic.getStringVal()" insertable="false" updatable="false"/>
+            </basic>
+            <basic name="statisticW">
+                <column name="mssf_statistic"/>
+            </basic>
+            <basic name="recAll">
+                <column name="mssf_rec_all"/>
+            </basic>
+            <basic name="recErr">
+                <column name="mssf_rec_er"/>
+            </basic>
+            <basic name="secAll">
+                <column name="mssf_sec_all"/>
+            </basic>
+            <basic name="secErr">
+                <column name="mssf_sec_er"/>
+            </basic>
+
+            <many-to-one name="config" fetch="LAZY">
+                <join-column name="mssf_msso_id" insertable="false" updatable="false" />
+            </many-to-one>
+        </attributes>
+    </entity>
+
+</entity-mappings>

@@ -1,0 +1,48 @@
+1) MainMenu 
+// menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4,InputEvent.CTRL_MASK));
+   menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4,InputEvent.CTRL_DOWN_MASK));
+
+2) DbConnectJdbc
+// Class.forName(driver).newInstance();
+   Class.forName(driver).getDeclaredConstructor().newInstance();
+
+3) Query
+// import org.hibernate.Query;
+   import org.hibernate.query.Query;
+
+// Query query = session.createQuery(strQuery);
+   Query<?> query = session.createQuery(strQuery);
+
+4) SQLQuery
+// import org.hibernate.SQLQuery;
+   import org.hibernate.query.NativeQuery;
+
+// SQLQuery query = session.createSQLQuery(strQuery);
+   NativeQuery<?> query = session.createNativeQuery(strQuery);
+
+5) setParameter
+// int j = 0;
+   int j = 1; // !!!!!!!!!
+
+// query.setLong(j, objId);
+   query.setParameter( j, objId, LongType.INSTANCE);
+
+// query.setString(j, path);
+   query.setParameter( j, path, StringType.INSTANCE);
+
+//---------------------------------------------------
+// Если открывали глобальный отдельный Connection, то его надо закрыть.
+// Иначе leak connection
+//---------------------------------------------------
+  if (sessionFactory != null && dbConn != null) {
+    try {
+      ConnectionProvider connectionProvider = sessionFactory.getSessionFactoryOptions().getServiceRegistry()
+                        .getService(ConnectionProvider.class);
+      connectionProvider.closeConnection(dbConn);   // !!!!!!
+      dbConn.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    dbConn = null;
+  }
+ 

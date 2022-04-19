@@ -1,0 +1,19 @@
+Pre-established Use Cases
+Pre-requisites: Choose the JDBC driver based on JDBC Spec and JDK version
+The first thing is to determine which JDBC Specification and JDK you intent to use the drivers and companion jars for.
+
+ojdbc8-production, ojdbc8-debug, ojdbc8-observability, ojdbc8-observability-debug: 
+these artifacts support the JDBC 4.2 Spec and can be used with JDK8, JDK11, JDK12, JDK13, JDK14, and JDK15
+
+ojdbc11-production, ojdbc11-debug, ojdbc11-observability, ojdbc11-observability-debug: 
+these artifacts support the JDBC 4.3 and can be used with JDK11, JDK12, JDK13, JDK14, and JDK15.
+
+
+<dependencies>
+  <dependency>
+    <groupId>com.oracle.database.jdbc</groupId>
+    <artifactId>ojdbc11-production</artifactId>
+    <version>21.5.0.0</version>
+    <type>pom</type>
+  </dependency>
+</dependencies>

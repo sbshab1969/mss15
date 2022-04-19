@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings 
+        version="2.2" 
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+
+    <package>acp.db.domain</package>
+
+    <entity class="ConfigClass" access="FIELD">
+    	<table name="mss_options" />
+    	<sequence-generator name="msso_gen" sequence-name="msso_seq" allocation-size="1" />
+        <attributes>
+            <id name="id">
+                <column name="msso_id"/>
+                <generated-value generator="msso_gen" strategy="SEQUENCE"/>
+            </id>
+            <basic name="name">
+                <column name="msso_name"/>
+            </basic>
+            <basic name="configR">
+                <column name="msso_config.getStringVal()" insertable="false" updatable="false"/>
+            </basic>
+            <basic name="configW">
+                <column name="msso_config"/>
+            </basic>
+            <basic name="dateBegin">
+                <column name="msso_dt_begin"/>
+            </basic>
+            <basic name="dateEnd">
+                <column name="msso_dt_end"/>
+            </basic>
+            <basic name="comment">
+                <column name="msso_comment"/>
+            </basic>
+            <basic name="dateCreate">
+                <column name="msso_dt_create"/>
+            </basic>
+            <basic name="dateModify">
+                <column name="msso_dt_modify"/>
+            </basic>
+            <basic name="owner">
+                <column name="msso_owner"/>
+            </basic>
+            <basic name="sourceId">
+                <column name="msso_msss_id"/>
+            </basic>
+            <many-to-one name="source" fetch="LAZY">
+                <join-column name="msso_msss_id" insertable="false" updatable="false" />
+            </many-to-one>
+        </attributes>
+    </entity>
+
+</entity-mappings>

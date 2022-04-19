@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings 
+        version="2.2" 
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+
+    <package>acp.db.domain</package>
+
+    <entity class="VarClass" access="FIELD">
+    	<table name="mss_vars" />
+    	<sequence-generator name="mssv_gen" sequence-name="mssv_seq" allocation-size="1" />
+        <attributes>
+            <id name="id">
+                <column name="mssv_id"/>
+                <generated-value generator="mssv_gen" strategy="SEQUENCE"/>
+            </id>
+            <basic name="name">
+                <column name="mssv_name"/>
+            </basic>
+            <basic name="type">
+                <column name="mssv_type"/>
+            </basic>
+            <basic name="len">
+                <column name="mssv_len"/>
+            </basic>
+            <basic name="valuen">
+                <column name="mssv_valuen"/>
+            </basic>
+            <basic name="valuev">
+                <column name="mssv_valuev"/>
+            </basic>
+            <basic name="valued">
+                <column name="mssv_valued"/>
+            </basic>
+            <basic name="dateModify">
+                <column name="mssv_last_modify"/>
+            </basic>
+            <basic name="owner">
+                <column name="mssv_owner"/>
+            </basic>
+        </attributes>
+    </entity>
+
+</entity-mappings>

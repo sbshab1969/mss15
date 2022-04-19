@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings 
+        version="2.2" 
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+
+    <package>acp.db.domain</package>
+
+    <entity class="FileOtherClass" access="FIELD">
+    	<table name="mss_logs" />
+    	<sequence-generator name="mssl_gen" sequence-name="mssl_seq" allocation-size="1" />
+        <attributes>
+            <id name="id">
+                <column name="mssl_id"/>
+                <generated-value generator="mssl_gen" strategy="SEQUENCE"/>
+            </id>
+            <basic name="dateEvent">
+                <column name="mssl_dt_event"/>
+            </basic>
+            <basic name="descr">
+                <column name="mssl_desc"/>
+            </basic>
+            <basic name="refId">
+                <column name="mssl_ref_id"/>
+            </basic>
+            <basic name="confId">
+                <column name="mssl_msso_id"/>
+            </basic>
+            <basic name="constId">
+                <column name="mssl_mssc_id"/>
+            </basic>
+        </attributes>
+    </entity>
+
+</entity-mappings>
